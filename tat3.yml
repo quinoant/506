@@ -1,3 +1,5 @@
+
+
 version: '3.8'
 services:
   db2:
@@ -11,5 +13,16 @@ services:
       - tatdat3:/var/lib/mysql
     ports:
       - "33306:3306"
+  phpmyadmin2:
+    image: phpmyadmin/phpmyadmin:latest
+    restart: always
+    depends_on: 
+      - db2
+    environment:
+        PMA_HOST: db2
+        PMA_USER: root
+        PMA_PASSWORD: group3
+    ports:
+      - "8083:80"
 volumes:
   tatdat3:
